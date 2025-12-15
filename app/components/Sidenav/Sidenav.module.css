@@ -1,0 +1,103 @@
+.sidenavContainer {
+  background-color: #0e3b3e;
+  box-shadow: 0px 4px 9px 0px #00000063;
+  height: 49px;
+  padding: 0 51px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.socialIcons {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.otherCategoryOptionsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 36px;
+  align-items: center;
+}
+
+.categoryText {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.otherCategoryOptions {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: width 0.3s ease;
+  z-index: 900;
+}
+
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #faf7f7;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.sidenav.open {
+  left: 0;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.sidenav a {
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #000;
+  display: block;
+  transition: background 0.2s;
+}
+
+.sidenav a:hover {
+  background-color: #877f7f;
+}
