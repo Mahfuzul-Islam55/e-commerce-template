@@ -1,0 +1,118 @@
+.navbarContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 68px;
+  background-color: #03484d;
+  gap: 41px;
+  scroll-behavior: fixed;
+  padding: 0 61px;
+
+  @media (max-width: 480px) {
+    height: 48px;
+    align-items: center;
+    padding: 8px 20px;
+    gap: 24px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+    padding: 0 40px;
+  }
+
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  width: 132.5px;
+  height: 48px;
+  cursor: pointer;
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 24px;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    width: 110px;
+    height: 30px;
+  }
+  @media (max-width: 1024px) {
+    order: 1;
+  }
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: row;
+  width: 38vw;
+  height: 39px;
+
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  @media (max-width: 1024px) {
+    order: 3;
+    flex: 1 1 100%;
+  }
+}
+
+.emptyContainer {
+  width: 134.5px;
+  height: 45px;
+}
+
+.signInContainer {
+  display: flex;
+  flex-direction: column;
+
+  padding: 3px;
+  gap: 4px;
+  color: #ffffff;
+}
+
+.cellPhoneContainer {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-right: -18px;
+}
+
+.callUsNow {
+  height: 11px;
+  font-size: 9px;
+}
+.signInText {
+  cursor: pointer;
+}
+
+.userContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.userAccountContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 23px;
+  margin-left: auto;
+  @media (max-width: 1024px) {
+    order: 2;
+    margin-left: auto;
+  }
+}

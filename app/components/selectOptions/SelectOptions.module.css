@@ -1,0 +1,65 @@
+.selectWrapper {
+  height: 39px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  @media (max-width: 480px) {
+    width: 100%;
+    border: 1px solid #aba3a3;
+    border-color: #aba3a3;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  @media (min-width: 481px) and (max-width: 1024px) {
+    border: 1px solid #aba3a3;
+    border-color: #aba3a3;
+  }
+}
+
+.selectWrapper label {
+  display: block;
+  font-size: 13px;
+  line-height: 100%;
+  font-weight: 400;
+  letter-spacing: 0%;
+  color: #aba3a3;
+}
+
+.selectWrapper select {
+  width: 170px;
+  height: 38px;
+  padding: 9.5px 0;
+  padding-left: 17.5px;
+  font-weight: 400;
+  letter-spacing: 0%;
+  font-size: 13px;
+  line-height: 100%;
+  color: #aba3a3;
+  background-color: #fff;
+  border: 0px !important;
+
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-image: url("/asset/arrowDownIcon.svg");
+
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 24px;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    border: 1px solid #aba3a3;
+    border-color: #aba3a3;
+  }
+}
+
+.selectWrapper select:hover {
+  border-color: #aba3a3;
+  padding-left: 17.5px;
+  margin: 0;
+}
