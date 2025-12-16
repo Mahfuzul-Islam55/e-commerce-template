@@ -31,7 +31,7 @@ const Category = () => {
           width={66}
           height={66}
           className={`${styles.arrow} ${styles.left}`}
-          onClick={prevIndex}
+          onClick={index !== 0 ? prevIndex : undefined}
         />
 
         <div className={styles.sliderViewport}>
@@ -63,7 +63,7 @@ const Category = () => {
           width={66}
           height={66}
           className={`${styles.arrow} ${styles.right}`}
-          onClick={nextIndex}
+          onClick={index !== items.length - 1 ? nextIndex : undefined}
         />
       </div>
     </div>

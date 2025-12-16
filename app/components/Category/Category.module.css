@@ -28,6 +28,8 @@
 }
 
 .buttonContainer {
+  position: relative;
+  z-index: 20;
   display: flex;
   box-shadow: 0px 1px 7px 0px #00000091;
   color: #fef9f9f2;
