@@ -111,84 +111,114 @@ const footerLinksOptions = [
     ],
   },
 ];
+
+const cardImageList = [
+  {
+    id: 1,
+    image: "/asset/visaCardImage.png",
+  },
+  {
+    id: 2,
+    image: "/asset/masterCardImage.png",
+  },
+  {
+    id: 3,
+    image: "/asset/cashCardImage.png",
+  },
+  {
+    id: 4,
+    image: "/asset/installmentCardImage.png",
+  },
+];
 const Footer = () => {
   return (
-    <div>
-      <div className={styles.footerInfoContainer}>
-        <div className={styles.contactContainer}>
-          <div
-            style={{ width: "9.45vw", height: "3.4vw", position: "relative" }}
-          >
-            <Image src={"/asset/logo.svg"} alt="" fill property="" />
-          </div>
-
-          <h3 className={styles.contactText}>Got questions? Call us 24/7!</h3>
-          <h5 className={styles.phone}>
-            03 111 666 144
-            <br />
-            0317 1777015.
-          </h5>
-          <h3 className={styles.contactText}>
-            Contact info <br />
-            <span className={styles.phone}>info@winstore.pk</span>
-          </h3>
-
-          <div className={styles.socialIcons}>
-            <Image
-              src="/asset/facebookIcon.svg"
-              alt=""
-              width={11}
-              height={22}
-              style={{ cursor: "pointer" }}
-            />
-            <Image
-              src="/asset/twitterIcon.svg"
-              alt=""
-              width={22}
-              height={18}
-              style={{ cursor: "pointer" }}
-            />
-            <Image
-              src="/asset/linkedinIcon.svg"
-              alt=""
-              width={22}
-              height={22}
-              style={{ cursor: "pointer" }}
-            />
-            <Image
-              src="/asset/instagramIcon.svg"
-              alt=""
-              width={22}
-              height={22}
-              style={{ cursor: "pointer" }}
-            />
-          </div>
-        </div>
-
-        <div className={styles.otherLinksContainer}>
-          {footerLinksOptions.map((section) => (
-            <div key={section.titleId}>
-              <div className={styles.otherLinksOptions}>
-                <h3 className={styles.otherLinksTitle}>{section.title}</h3>
-                {Array.isArray(section.links) &&
-                  section.links.map((link) => (
-                    <h5 key={link.id} className={styles.otherLinks}>
-                      {link.name}
-                    </h5>
-                  ))}
-              </div>
+    <>
+      <div className={styles.footerContainer}>
+        <div className={styles.footerInfoContainer}>
+          <div className={styles.contactContainer}>
+            <div
+              style={{ width: "9.45vw", height: "3.4vw", position: "relative" }}
+            >
+              <Image src={"/asset/logo.svg"} alt="" fill property="" />
             </div>
-          ))}
+
+            <h3 className={styles.contactText}>Got questions? Call us 24/7!</h3>
+            <h5 className={styles.phone}>
+              03 111 666 144
+              <br />
+              0317 1777015.
+            </h5>
+            <h3 className={styles.contactText}>
+              Contact info <br />
+              <span className={styles.phone}>info@winstore.pk</span>
+            </h3>
+
+            <div className={styles.socialIcons}>
+              <Image
+                src="/asset/facebookIcon.svg"
+                alt=""
+                width={11}
+                height={22}
+                style={{ cursor: "pointer" }}
+              />
+              <Image
+                src="/asset/twitterIcon.svg"
+                alt=""
+                width={22}
+                height={18}
+                style={{ cursor: "pointer" }}
+              />
+              <Image
+                src="/asset/linkedinIcon.svg"
+                alt=""
+                width={22}
+                height={22}
+                style={{ cursor: "pointer" }}
+              />
+              <Image
+                src="/asset/instagramIcon.svg"
+                alt=""
+                width={22}
+                height={22}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+          </div>
+
+          <div>
+            <div className={styles.otherLinksContainer}>
+              {footerLinksOptions.map((section) => (
+                <div key={section.titleId}>
+                  <div className={styles.otherLinksOptions}>
+                    <h3 className={styles.otherLinksTitle}>{section.title}</h3>
+                    {Array.isArray(section.links) &&
+                      section.links.map((link) => (
+                        <h5 key={link.id} className={styles.otherLinks}>
+                          {link.name}
+                        </h5>
+                      ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className={styles.cardContainer}>
+              {cardImageList.map((item) => (
+                <Image
+                  key={item.id}
+                  src={item.image}
+                  alt=""
+                  width={97}
+                  height={55}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-
-      <div style={{ display: "flex", gap: "12px" }}>
-        <Image src={"/asset/visaCardImage.png"} alt="" width={97} height={55} />
-        <Image src={"/asset/visaCardImage.png"} alt="" width={97} height={55} />
-        <Image src={"/asset/visaCardImage.png"} alt="" width={97} height={55} />
-        <Image src={"/asset/visaCardImage.png"} alt="" width={97} height={55} />
-      </div>
-    </div>
+      <h3 className={styles.copywrite}>
+        © 2021 Winstore. All Rights Reserved.
+      </h3>
+    </>
   );
 };
 

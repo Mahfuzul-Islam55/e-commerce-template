@@ -1,36 +1,25 @@
 .footerContainer {
-  display: flex;
   padding: 97px 106px;
-  gap: 10.5vw;
   background-color: #393939;
 
   @media (max-width: 480px) {
-    display: flex;
-    flex-direction: column;
     padding: 20px 20px;
   }
   @media (min-width: 481px) and (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
     padding: 60px 70px;
   }
 }
 
 .footerInfoContainer {
   display: flex;
-  padding: 97px 106px;
   gap: 10.5vw;
-  background-color: #393939;
-
   @media (max-width: 480px) {
     display: flex;
     flex-direction: column;
-    padding: 20px 20px;
   }
   @media (min-width: 481px) and (max-width: 767px) {
     display: flex;
     flex-direction: column;
-    padding: 60px 70px;
   }
 }
 
@@ -102,4 +91,33 @@
   color: #ffffff;
   margin: 0;
   cursor: pointer;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: end;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  @media (max-width: 767px) {
+    justify-content: start;
+  }
+}
+
+.copywrite {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 17px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  padding: 20 61px;
+  background-color: #161616;
+  margin: 0;
+  @media (max-width: 480px) {
+    font-size: 13px;
+    padding: 10px 20px;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    font-size: 15px;
+  }
 }
