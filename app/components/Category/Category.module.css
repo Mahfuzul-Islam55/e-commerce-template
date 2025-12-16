@@ -1,0 +1,77 @@
+.categoryContainer {
+  background: linear-gradient(180deg, #f3edc9 0%, rgba(255, 255, 255, 0) 100%);
+
+  padding-top: 15px;
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.sliderContent {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  gap: 33px;
+}
+
+.buttonContainer {
+  display: flex;
+  box-shadow: 0px 1px 7px 0px #00000091;
+  color: #fef9f9f2;
+  opacity: 0.95;
+  padding-right: 44px;
+  padding-left: 15px;
+  gap: 22px;
+  border: 0px;
+  margin-top: -70px;
+  margin-left: -8px;
+  cursor: pointer;
+}
+
+.buttonText {
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 53px;
+  letter-spacing: 0%;
+  color: #000000;
+  border: 0px;
+}
+
+.buttonTextDefault {
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 53px;
+  letter-spacing: 0%;
+  color: #14b1f0;
+  border: 0px;
+}
+
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.right {
+  right: 10px;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.sliderViewport {
+  overflow: hidden;
+  width: calc(100% - 140px);
+  margin: 0 auto;
+}

@@ -3,7 +3,7 @@ import styles from "@/app/components/HeroSection/HeroSection.module.css";
 
 const HeroSection = () => {
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <div style={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
         <Image
           src="/asset/heroImage.png"
@@ -48,6 +48,12 @@ const HeroSection = () => {
                 display: "block",
               }}
             />
+          </div>
+
+          <div className={styles.sliderContainer}>
+            <span className={styles.sliderChip}></span>
+            <span className={styles.sliderChip}></span>
+            <span className={styles.sliderChip}></span>
           </div>
         </div>
       </div>
