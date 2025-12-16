@@ -3,6 +3,7 @@ import Sidenav from "@/app/components/Sidenav/Sidenav";
 import HeroSection from "@/app/components/HeroSection/HeroSection";
 import Category from "@/app/components/Category/Category";
 import NewArrival from "@/app/components/NewArrival/NewArrival";
+import Footer from "@/app/components/Footer/Footer";
 export default function Home() {
   return (
     <>
@@ -11,6 +12,7 @@ export default function Home() {
       <HeroSection />
       <Category />
       <NewArrival />
+      <Footer />
     </>
   );
 }
