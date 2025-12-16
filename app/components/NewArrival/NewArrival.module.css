@@ -44,6 +44,7 @@
   line-height: 100%;
   letter-spacing: 0%;
   color: #697475;
+  margin: 0;
 }
 
 .discountPrice {
@@ -52,6 +53,7 @@
   line-height: 100%;
   letter-spacing: 0%;
   color: #0aaeb9;
+  margin: 0;
 }
 
 .addToCartButton {
@@ -68,4 +70,40 @@
   border: 0px;
   text-align: center;
   justify-content: center;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.categoryPageContainer {
+  display: flex;
+  gap: 31px;
+  padding: 0px 61px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  @media (max-width: 480px) {
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 10px 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+.categoryPageTitle {
+  padding: 0px 61px;
+
+  @media (max-width: 480px) {
+    padding: 10px 20px;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 10px 36px;
+  }
 }

@@ -8,7 +8,7 @@ const Favourite = () => {
         justifyContent: "center",
       }}
     >
-      This page is under developed
+      This page is under developing
     </h1>
   );
 };

@@ -1,5 +1,7 @@
 import styles from "@/app/components/Footer/Footer.module.css";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const footerLinksOptions = [
   {
@@ -8,32 +10,32 @@ const footerLinksOptions = [
     links: [
       {
         name: "Installments",
-        route: "/",
+        route: "/pages/home",
         id: 1,
       },
       {
         name: "Electronics",
-        route: "/",
+        route: "/pages/home",
         id: 2,
       },
       {
         name: "Grocery",
-        route: "/",
+        route: "/pages/home",
         id: 3,
       },
       {
         name: "Health & Beauty",
-        route: "/",
+        route: "/pages/home",
         id: 4,
       },
       {
         name: "Home Appliances",
-        route: "/",
+        route: "/pages/home",
         id: 5,
       },
       {
         name: "Mobile Accessories",
-        route: "/",
+        route: "/pages/home",
         id: 6,
       },
     ],
@@ -44,32 +46,32 @@ const footerLinksOptions = [
     links: [
       {
         name: "About Us",
-        route: "/",
+        route: "/pages/home",
         id: 1,
       },
       {
         name: "Contact Us",
-        route: "/",
+        route: "/pages/home",
         id: 2,
       },
       {
         name: "FAQs",
-        route: "/",
+        route: "/pages/home",
         id: 3,
       },
       {
         name: "Shipping & Return",
-        route: "/",
+        route: "/pages/home",
         id: 4,
       },
       {
         name: "Privacy policy",
-        route: "/",
+        route: "/pages/home",
         id: 5,
       },
       {
         name: "Terms & Conditions",
-        route: "/",
+        route: "/pages/home",
         id: 6,
       },
     ],
@@ -80,32 +82,32 @@ const footerLinksOptions = [
     links: [
       {
         name: "My Account",
-        route: "/",
+        route: "/pages/home",
         id: 1,
       },
       {
         name: "Track Your Order",
-        route: "/",
+        route: "/pages/home",
         id: 2,
       },
       {
         name: "Recently Viewed",
-        route: "/",
+        route: "/pages/home",
         id: 3,
       },
       {
         name: "Wishlist",
-        route: "/",
+        route: "/pages/home",
         id: 4,
       },
       {
         name: "Compare",
-        route: "/",
+        route: "/pages/home",
         id: 5,
       },
       {
         name: "Become a Vendor",
-        route: "/",
+        route: "/pages/home",
         id: 6,
       },
     ],
@@ -130,7 +132,12 @@ const cardImageList = [
     image: "/asset/installmentCardImage.png",
   },
 ];
+
 const Footer = () => {
+  const router = useRouter();
+  const handleRoute = (route: string) => {
+    router.push(route);
+  };
   return (
     <>
       <div className={styles.footerContainer}>
@@ -139,7 +146,9 @@ const Footer = () => {
             <div
               style={{ width: "9.45vw", height: "3.4vw", position: "relative" }}
             >
-              <Image src={"/asset/logo.svg"} alt="" fill property="" />
+              <Link href={"/"}>
+                <Image src={"/asset/logo.svg"} alt="" fill property="" />
+              </Link>
             </div>
 
             <h3 className={styles.contactText}>Got questions? Call us 24/7!</h3>
@@ -154,34 +163,58 @@ const Footer = () => {
             </h3>
 
             <div className={styles.socialIcons}>
-              <Image
-                src="/asset/facebookIcon.svg"
-                alt=""
-                width={11}
-                height={22}
-                style={{ cursor: "pointer" }}
-              />
-              <Image
-                src="/asset/twitterIcon.svg"
-                alt=""
-                width={22}
-                height={18}
-                style={{ cursor: "pointer" }}
-              />
-              <Image
-                src="/asset/linkedinIcon.svg"
-                alt=""
-                width={22}
-                height={22}
-                style={{ cursor: "pointer" }}
-              />
-              <Image
-                src="/asset/instagramIcon.svg"
-                alt=""
-                width={22}
-                height={22}
-                style={{ cursor: "pointer" }}
-              />
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/asset/facebookIcon.svg"
+                  alt=""
+                  width={11}
+                  height={22}
+                  style={{ cursor: "pointer" }}
+                />
+              </a>
+              <a
+                href="https://x.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/asset/twitterIcon.svg"
+                  alt=""
+                  width={22}
+                  height={18}
+                  style={{ cursor: "pointer" }}
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/asset/linkedinIcon.svg"
+                  alt=""
+                  width={22}
+                  height={22}
+                  style={{ cursor: "pointer" }}
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/asset/instagramIcon.svg"
+                  alt=""
+                  width={22}
+                  height={22}
+                  style={{ cursor: "pointer" }}
+                />
+              </a>
             </div>
           </div>
 
@@ -193,7 +226,11 @@ const Footer = () => {
                     <h3 className={styles.otherLinksTitle}>{section.title}</h3>
                     {Array.isArray(section.links) &&
                       section.links.map((link) => (
-                        <h5 key={link.id} className={styles.otherLinks}>
+                        <h5
+                          key={link.id}
+                          className={styles.otherLinks}
+                          onClick={() => handleRoute(link.route)}
+                        >
                           {link.name}
                         </h5>
                       ))}
