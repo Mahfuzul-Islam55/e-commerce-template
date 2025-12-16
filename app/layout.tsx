@@ -1,5 +1,9 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/app/components/Navbar/Navbar";
+import Sidenav from "@/app/components/Sidenav/Sidenav";
+import Footer from "@/app/components/Footer/Footer";
+
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -14,7 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable}  `}>{children}</body>
+      <body className={`${roboto.variable}`}>
+        <div>
+          <Navbar />
+          <Sidenav />
+          <main>{children}</main>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

@@ -2,17 +2,20 @@ import Image from "next/image";
 import SearchComponent from "@/app/components/SearchComponent/SearchComponent";
 import styles from "@/app/components/Navbar/Navbar.module.css";
 import SelectOptions from "@/app/components/selectOptions/SelectOptions";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
     <div className={styles.navbarContainer}>
-      <Image
-        src={"/asset/logo.svg"}
-        alt=""
-        className={styles.logo}
-        width={132.5}
-        height={48}
-      />
+      <Link href={"/"}>
+        <Image
+          src={"/asset/logo.svg"}
+          alt=""
+          className={styles.logo}
+          width={132.5}
+          height={48}
+        />
+      </Link>
       <div className={styles.searchContainer}>
         <SelectOptions />
         <SearchComponent />

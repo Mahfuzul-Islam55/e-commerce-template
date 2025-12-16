@@ -1,19 +1,12 @@
 .selectWrapper {
-  height: 39px;
+  height: 38px;
   display: inline-block;
   position: relative;
   cursor: pointer;
   @media (max-width: 480px) {
     width: 100%;
-    border: 1px solid #aba3a3;
-    border-color: #aba3a3;
+    border-bottom-right-radius: 6px !important;
     border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-  }
-
-  @media (min-width: 481px) and (max-width: 1024px) {
-    border: 1px solid #aba3a3;
-    border-color: #aba3a3;
   }
 }
 
@@ -55,6 +48,8 @@
     width: 100%;
     border: 1px solid #aba3a3;
     border-color: #aba3a3;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
   }
 }
 
