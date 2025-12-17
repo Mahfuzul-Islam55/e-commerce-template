@@ -54,9 +54,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
               <div style={{ display: "flex", gap: "8px", marginTop: "auto" }}>
                 <span className={styles.actualPriceText}>
-                  <del>
-                    RS {Math.floor(Math.random() * (200 - 100 + 1)) + 100}
-                  </del>
+                  <del>RS {536.0}</del>
                 </span>
                 <span className={styles.discountPrice}>RS {data.price}</span>
               </div>
