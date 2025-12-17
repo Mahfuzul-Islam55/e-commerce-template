@@ -28,6 +28,29 @@ const otherCategoryOptions = [
   },
 ];
 
+const socialIconList = [
+  {
+    id: 1,
+    link: "https://www.facebook.com/",
+    image: "/asset/facebookIcon.svg",
+  },
+  {
+    id: 2,
+    link: "https://x.com/",
+    image: "/asset/twitterIcon.svg",
+  },
+  {
+    id: 3,
+    link: "https://www.linkedin.com/",
+    image: "/asset/linkedinIcon.svg",
+  },
+  {
+    id: 4,
+    link: "https://www.instagram.com/",
+    image: "/asset/instagramIcon.svg",
+  },
+];
+
 const Sidenav = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [options, setOptions] = useState<string[]>([]);
@@ -90,54 +113,22 @@ const Sidenav = () => {
         </div>
 
         <div className={styles.socialIcons}>
-          <a
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/asset/facebookIcon.svg"
-              alt=""
-              width={11}
-              height={22}
-              style={{ cursor: "pointer" }}
-            />
-          </a>
-          <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/asset/twitterIcon.svg"
-              alt=""
-              width={22}
-              height={18}
-              style={{ cursor: "pointer" }}
-            />
-          </a>
-          <a
-            href="https://www.linkedin.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/asset/linkedinIcon.svg"
-              alt=""
-              width={22}
-              height={22}
-              style={{ cursor: "pointer" }}
-            />
-          </a>
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/asset/instagramIcon.svg"
-              alt=""
-              width={22}
-              height={22}
-              style={{ cursor: "pointer" }}
-            />
-          </a>
+          {socialIconList.map((item) => (
+            <a
+              key={item.id}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={item.image}
+                alt=""
+                width={22}
+                height={22}
+                style={{ cursor: "pointer" }}
+              />
+            </a>
+          ))}
         </div>
       </div>
     </div>
