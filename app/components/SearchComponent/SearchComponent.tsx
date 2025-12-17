@@ -6,7 +6,7 @@ import Image from "next/image";
 import styles from "@/app/components/SearchComponent/SearchComponent.module.css";
 
 const SearchComponent = () => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<string>("");
   const router = useRouter();
 
   const handleSearch = async () => {

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+//As there is no image from the find All Category API
+//I'm using some random mock images
 const items: any = [
   "/asset/electronicsImage.svg",
   "/asset/fashionImage.svg",
@@ -12,14 +14,17 @@ const items: any = [
   "/asset/appliancesImage.svg",
   "/asset/womensClothingImage.svg",
 ];
+type category = {
+  name: string;
+  thumbnail: string;
+};
 
 const Category = () => {
   const [index, setIndex] = useState<number>(0);
+  const [options, setOptions] = useState<category[]>([]);
 
-  const [options, setOptions] = useState<{ name: string; thumbnail: string }[]>(
-    []
-  );
   const router = useRouter();
+
   useEffect(() => {
     const getOptions = async () => {
       const res = await fetch("/api/categories");

@@ -8,6 +8,7 @@ const SelectOptions = () => {
   const [options, setOptions] = useState<string[]>([]);
   const [value, setValue] = useState<string>("");
   const router = useRouter();
+
   useEffect(() => {
     const getOptions = async () => {
       const res = await fetch("/api/categories");

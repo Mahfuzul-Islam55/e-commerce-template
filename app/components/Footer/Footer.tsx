@@ -133,11 +133,36 @@ const cardImageList = [
   },
 ];
 
+const socialIconList = [
+  {
+    id: 1,
+    link: "https://www.facebook.com/",
+    image: "/asset/facebookIcon.svg",
+  },
+  {
+    id: 2,
+    link: "https://x.com/",
+    image: "/asset/twitterIcon.svg",
+  },
+  {
+    id: 3,
+    link: "https://www.linkedin.com/",
+    image: "/asset/linkedinIcon.svg",
+  },
+  {
+    id: 4,
+    link: "https://www.instagram.com/",
+    image: "/asset/instagramIcon.svg",
+  },
+];
+
 const Footer = () => {
   const router = useRouter();
+
   const handleRoute = (route: string) => {
     router.push(route);
   };
+
   return (
     <>
       <div className={styles.footerContainer}>
@@ -163,58 +188,22 @@ const Footer = () => {
             </h3>
 
             <div className={styles.socialIcons}>
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/asset/facebookIcon.svg"
-                  alt=""
-                  width={11}
-                  height={22}
-                  style={{ cursor: "pointer" }}
-                />
-              </a>
-              <a
-                href="https://x.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/asset/twitterIcon.svg"
-                  alt=""
-                  width={22}
-                  height={18}
-                  style={{ cursor: "pointer" }}
-                />
-              </a>
-              <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/asset/linkedinIcon.svg"
-                  alt=""
-                  width={22}
-                  height={22}
-                  style={{ cursor: "pointer" }}
-                />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/asset/instagramIcon.svg"
-                  alt=""
-                  width={22}
-                  height={22}
-                  style={{ cursor: "pointer" }}
-                />
-              </a>
+              {socialIconList.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={item.image}
+                    alt=""
+                    width={22}
+                    height={22}
+                    style={{ cursor: "pointer" }}
+                  />
+                </a>
+              ))}
             </div>
           </div>
 

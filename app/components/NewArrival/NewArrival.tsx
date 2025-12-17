@@ -17,9 +17,11 @@ type product = {
     count: number;
   };
 };
+
 const NewArrival = () => {
   const router = useRouter();
   const [products, setProducts] = useState<product[]>([]);
+
   const handleCartClick = () => {
     router.push("/pages/cart");
   };

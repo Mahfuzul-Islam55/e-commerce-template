@@ -12,6 +12,7 @@ interface ChipProps {
 export default function ChipRow({ options = [], value, setValue }: ChipProps) {
   const [visibleCount, setVisibleCount] = useState(4);
   const [start, setStart] = useState(0);
+
   const end = start + visibleCount;
   const canGoLeft = start > 0;
   const canGoRight = end < options.length;
