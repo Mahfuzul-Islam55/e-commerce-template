@@ -1,6 +1,6 @@
 export async function getProductsByCategory(category: string) {
   const res = await fetch(
-    `https://fakestoreapi.com/products/category/${category}`
+    `https://fakestoreapi.com/products/category/${encodeURIComponent(category)}`
   );
 
   if (!res.ok) {
