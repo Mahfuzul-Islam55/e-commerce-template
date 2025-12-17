@@ -4,6 +4,10 @@
   line-height: 100%;
   letter-spacing: 0%;
   color: #000000;
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
 }
 
 .arrivalContainer {

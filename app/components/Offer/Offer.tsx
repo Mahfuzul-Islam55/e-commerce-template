@@ -1,8 +1,9 @@
 "use client";
 import styles from "@/app/components/Offer/Offer.module.css";
 import ChipRow from "./Chip";
-import { getAllProducts, getProductsByCategory } from "@/app/lib/api";
+import { getProductsByCategory } from "@/app/lib/api";
 import { useEffect, useState } from "react";
+
 type product = {
   id: number;
   title: string;
@@ -15,53 +16,6 @@ type product = {
     count: number;
   };
 };
-const offerList = [
-  {
-    id: 1,
-    title: "Bin Bakar",
-    actualPrice: "56.000",
-    discountPrice: "110.000",
-    alreadySold: 5,
-    available: 8,
-    image: "/asset/arrivalImage.png",
-  },
-  {
-    id: 2,
-    title: "Bin Bakar",
-    actualPrice: "56.000",
-    discountPrice: "110.000",
-    alreadySold: 5,
-    available: 8,
-    image: "/asset/arrivalImage.png",
-  },
-  {
-    id: 3,
-    title: "Bin Bakar",
-    actualPrice: "56.000",
-    discountPrice: "110.000",
-    alreadySold: 5,
-    available: 8,
-    image: "/asset/arrivalImage.png",
-  },
-  {
-    id: 4,
-    title: "Bin Bakar",
-    actualPrice: "56.000",
-    discountPrice: "110.000",
-    alreadySold: 5,
-    available: 8,
-    image: "/asset/arrivalImage.png",
-  },
-  {
-    id: 5,
-    title: "Bin Bakar",
-    actualPrice: "56.000",
-    discountPrice: "110.000",
-    alreadySold: 5,
-    available: 8,
-    image: "/asset/arrivalImage.png",
-  },
-];
 
 const Offer = () => {
   const [options, setOptions] = useState<string[]>([]);
@@ -101,25 +55,24 @@ const Offer = () => {
       </div>
 
       <div className={styles.cards}>
-        {offerData.map((data) => (
+        {offerData.map((data, index) => (
           <div
-            key={data.id}
+            key={index}
             className={styles.card}
             style={{
               flexDirection:
-                data.id === 3
+                index === 2
                   ? "column"
-                  : [4, 5].includes(data.id)
+                  : [4, 5].includes(index)
                   ? "row-reverse"
                   : "row",
-              alignItems: data.id === 3 ? "center" : "",
-              maxHeight: data.id === 3 ? "580px" : "300px",
+              alignItems: index === 2 ? "center" : "",
             }}
           >
             <div
               style={{
-                order: data.id === 3 ? 2 : 1,
-                width: "50%",
+                order: index === 2 ? 2 : 1,
+                width: index === 2 ? "100%" : "50%",
               }}
             >
               <h3 className={styles.titleText}>{data.title}</h3>
@@ -145,8 +98,8 @@ const Offer = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 flex: 1,
-                order: data.id === 3 ? 1 : 2,
-                width: data.id === 3 ? "100%" : "50%",
+                order: index === 2 ? 1 : 2,
+                width: index === 2 ? "100%" : "50%",
               }}
             >
               <h3 className={styles.offerText}>
