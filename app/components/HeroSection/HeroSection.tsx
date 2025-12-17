@@ -3,13 +3,15 @@ import styles from "@/app/components/HeroSection/HeroSection.module.css";
 
 const HeroSection = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
+    <div
+      style={{ display: "flex", flexDirection: "column", position: "relative" }}
+    >
+      <div style={{ position: "relative", width: "100%" }}>
         <Image
           src="/asset/heroImage.png"
           alt=""
           fill
-          style={{ objectFit: "contain", objectPosition: "top" }}
+          style={{ objectFit: "cover", objectPosition: "top" }}
         />
 
         <div className={styles.backgroundImageOverlay}>
