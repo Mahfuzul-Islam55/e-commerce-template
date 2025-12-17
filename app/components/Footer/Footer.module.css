@@ -63,7 +63,7 @@
   gap: 11.3vw;
   @media (max-width: 480px) {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 

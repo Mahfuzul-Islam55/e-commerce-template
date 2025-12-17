@@ -34,7 +34,11 @@ export default async function CategoryPage({ params }: PageProps) {
           products.map((data) => (
             <div key={data.id} className={styles.arrivalCardContainer}>
               <h2 className={styles.categoryText}>{data.category}</h2>
-              <h3 className={styles.titleText}>{data.title} </h3>
+              <h3 className={styles.titleText}>
+                {data.title.length > 40
+                  ? data.title.slice(0, 40) + ".."
+                  : data.title}{" "}
+              </h3>
               <Image
                 style={{ marginTop: "auto" }}
                 src={`${data.image}`}

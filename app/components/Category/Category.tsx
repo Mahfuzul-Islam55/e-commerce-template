@@ -1,25 +1,52 @@
 "use client";
 import styles from "@/app/components/Category/Category.module.css";
 import Image from "next/image";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-// Demo Data
 const items: any = [
-  { name: "electronics", thumbnail: "/asset/electronicsImage.svg" },
-  { name: "jewelery", thumbnail: "/asset/fashionImage.svg" },
-  { name: "men's clothing", thumbnail: "/asset/appliancesImage.svg" },
-  { name: "women's clothing", thumbnail: "/asset/womensClothingImage.svg" },
-  { name: "men's clothing", thumbnail: "/asset/appliancesImage.svg" },
-  { name: "women's clothing", thumbnail: "/asset/womensClothingImage.svg" },
+  "/asset/electronicsImage.svg",
+  "/asset/fashionImage.svg",
+  "/asset/appliancesImage.svg",
+  "/asset/womensClothingImage.svg",
+  "/asset/appliancesImage.svg",
+  "/asset/womensClothingImage.svg",
 ];
 
 const Category = () => {
   const [index, setIndex] = useState<number>(0);
+
+  const [options, setOptions] = useState<{ name: string; thumbnail: string }[]>(
+    []
+  );
+  const router = useRouter();
+  useEffect(() => {
+    const getOptions = async () => {
+      const res = await fetch("/api/categories");
+      const data = await res.json();
+      const customizedData = Array.isArray(data)
+        ? data.map((item) => {
+            return {
+              name: item,
+              thumbnail: items[Math.floor(Math.random() * items.length)],
+            };
+          })
+        : [];
+      setOptions(customizedData);
+    };
+
+    getOptions();
+  }, []);
+
+  const handleClickHandle = (categoryName: string) => {
+    router.push(`/products/category/${categoryName}`);
+  };
+
   const prevIndex = () => {
-    setIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
+    setIndex((prev) => (prev === 0 ? options.length - 1 : prev - 1));
   };
   const nextIndex = () => {
-    setIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
+    setIndex((prev) => (prev === options.length - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -41,8 +68,12 @@ const Category = () => {
               transform: `translateX(-${index * 100}%)`,
             }}
           >
-            {items.map((item: any, index: number) => (
-              <div key={index}>
+            {options.map((item: any, index) => (
+              <div
+                key={index}
+                onClick={() => handleClickHandle(item.name)}
+                style={{ cursor: "pointer" }}
+              >
                 <Image src={item.thumbnail} alt="" width={272} height={199} />
                 <button className={styles.buttonContainer}>
                   <span className={styles.buttonText}>
@@ -63,7 +94,7 @@ const Category = () => {
           width={66}
           height={66}
           className={`${styles.arrow} ${styles.right}`}
-          onClick={index !== items.length - 1 ? nextIndex : undefined}
+          onClick={index !== options.length - 1 ? nextIndex : undefined}
         />
       </div>
     </div>
