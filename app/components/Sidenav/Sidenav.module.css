@@ -6,6 +6,9 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  position: sticky;
+  top: 68px;
+  z-index: 1000;
 
   @media (max-width: 480px) {
     display: flex;

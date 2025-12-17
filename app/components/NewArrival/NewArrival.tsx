@@ -1,6 +1,9 @@
+"use client";
 import styles from "@/app/components/NewArrival/NewArrival.module.css";
 import { getAllProducts } from "@/app/lib/api";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type product = {
   id: number;
@@ -14,8 +17,20 @@ type product = {
     count: number;
   };
 };
-const NewArrival = async () => {
-  const products: product[] = await getAllProducts();
+const NewArrival = () => {
+  const router = useRouter();
+  const [products, setProducts] = useState<product[]>([]);
+  const handleCartClick = () => {
+    router.push("/pages/cart");
+  };
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const products: product[] = await getAllProducts();
+      setProducts(products);
+    };
+    fetchProduct();
+  }, []);
 
   return (
     <div className={styles.arrivalContainer}>
@@ -53,7 +68,12 @@ const NewArrival = async () => {
                 <span className={styles.discountPrice}>RS {data.price}</span>
               </div>
 
-              <button className={styles.addToCartButton}>Add to cart</button>
+              <button
+                onClick={handleCartClick}
+                className={styles.addToCartButton}
+              >
+                Add to cart
+              </button>
             </div>
           ))}
       </div>
