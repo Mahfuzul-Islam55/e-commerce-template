@@ -3,24 +3,18 @@ import { useEffect, useState } from "react";
 import styles from "@/app/components/Offer/Offer.module.css";
 import Image from "next/image";
 
-const chips = [
-  "React",
-  "Next.js",
-  "Node",
-  "MongoDB",
-  "PostgreSQL",
-  "Docker",
-  "AWS",
-  "Redis",
-];
+interface ChipProps {
+  options: string[];
+  value: string;
+  setValue: (newValue: string) => void;
+}
 
-export default function ChipRow() {
+export default function ChipRow({ options = [], value, setValue }: ChipProps) {
   const [visibleCount, setVisibleCount] = useState(4);
   const [start, setStart] = useState(0);
-
   const end = start + visibleCount;
   const canGoLeft = start > 0;
-  const canGoRight = end < chips.length;
+  const canGoRight = end < options.length;
 
   useEffect(() => {
     const updateVisibleCount = () => {
@@ -42,8 +36,14 @@ export default function ChipRow() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.chips}>
-        {chips.slice(start, end).map((chip) => (
-          <span key={chip} className={styles.chip}>
+        {options.slice(start, end).map((chip) => (
+          <span
+            key={chip}
+            className={`${styles.chip} ${
+              chip === value ? styles.activeChip : ""
+            }`}
+            onClick={() => setValue(chip)}
+          >
             {chip}
           </span>
         ))}
@@ -52,7 +52,7 @@ export default function ChipRow() {
       <div className={styles.arrows}>
         <button
           className={styles.arrow}
-          disabled={!canGoLeft}
+          disabled={!canGoLeft || visibleCount === options.length}
           onClick={() => setStart(start - 1)}
         >
           <Image
@@ -65,7 +65,7 @@ export default function ChipRow() {
 
         <button
           className={styles.arrow}
-          disabled={!canGoRight}
+          disabled={!canGoRight || visibleCount === options.length}
           onClick={() => setStart(start + 1)}
         >
           <Image

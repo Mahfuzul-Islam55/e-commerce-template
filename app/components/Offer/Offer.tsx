@@ -1,8 +1,20 @@
+"use client";
 import styles from "@/app/components/Offer/Offer.module.css";
 import ChipRow from "./Chip";
-import Image from "next/image";
-import stylesArrival from "@/app/components/Offer/Offer.module.css";
-
+import { getAllProducts, getProductsByCategory } from "@/app/lib/api";
+import { useEffect, useState } from "react";
+type product = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+};
 const offerList = [
   {
     id: 1,
@@ -50,42 +62,79 @@ const offerList = [
     image: "/asset/arrivalImage.png",
   },
 ];
+
 const Offer = () => {
+  const [options, setOptions] = useState<string[]>([]);
+  const [value, setValue] = useState<string>("");
+  const [offerData, setOfferData] = useState<product[]>([]);
+
+  useEffect(() => {
+    const getOptions = async () => {
+      const res = await fetch("/api/categories");
+      const data = await res.json();
+      setOptions(data);
+      setValue(data[0]);
+    };
+    getOptions();
+  }, []);
+
+  useEffect(() => {
+    if (!value) return;
+    const fetchProducts = async () => {
+      try {
+        const data = await getProductsByCategory(value);
+        setOfferData(data.slice(0, 5));
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    };
+    fetchProducts();
+  }, [value]);
+
   return (
     <div className={styles.offerContainer}>
       <div className={styles.offerChipContainer}>
         <h3 className={styles.offerTitle}>
           <span style={{ color: "#00CAD7" }}>Best</span> Deals
         </h3>
-        <ChipRow />
+        <ChipRow options={options} value={value} setValue={setValue} />
       </div>
 
       <div className={styles.cards}>
-        {offerList.map((data) => (
+        {offerData.map((data) => (
           <div
             key={data.id}
             className={styles.card}
             style={{
-              flexDirection: data.id === 3 ? "column" : "row",
-              alignItems: data.id === 3 ? "center" : "center",
+              flexDirection:
+                data.id === 3
+                  ? "column"
+                  : [4, 5].includes(data.id)
+                  ? "row-reverse"
+                  : "row",
+              alignItems: data.id === 3 ? "center" : "",
+              maxHeight: data.id === 3 ? "580px" : "300px",
             }}
           >
             <div
               style={{
                 order: data.id === 3 ? 2 : 1,
+                width: "50%",
               }}
             >
               <h3 className={styles.titleText}>{data.title}</h3>
-              <h5 className={styles.discountPrice}>RS {data.discountPrice}</h5>
+              <h5 className={styles.discountPrice}>RS {data.price}</h5>
               <h5 className={styles.actualPriceText}>
-                <del>RS {data.actualPrice}</del>
+                <del>
+                  RS {Math.floor(Math.random() * (200 - 100 + 1)) + 100}
+                </del>
               </h5>
               <div style={{ paddingTop: "40px" }}>
                 <h5 className={styles.available}>
-                  Already Sold: {data.alreadySold}
+                  Already Sold:{Math.floor(Math.random() * (10 - 20 + 1)) + 10}
                 </h5>
                 <h5 className={styles.available}>
-                  Available: {data.available}
+                  Available: {Math.floor(Math.random() * (10 - 20 + 1)) + 10}
                 </h5>
               </div>
             </div>
