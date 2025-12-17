@@ -22,7 +22,12 @@ export default async function CategoryPage({ params }: PageProps) {
   const resolvedParams = await params;
   const categoryName = resolvedParams.slug;
 
-  const products: product[] = await getProductsByCategory(categoryName);
+  let products: product[] = [];
+  try {
+    products = await getProductsByCategory(categoryName);
+  } catch (error) {
+    console.error("Fetch failed on Vercel:", error);
+  }
 
   return (
     <div>
