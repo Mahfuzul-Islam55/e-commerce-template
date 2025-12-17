@@ -1,7 +1,7 @@
 "use client";
 import styles from "@/app/components/Offer/Offer.module.css";
 import ChipRow from "./Chip";
-import { getProductsByCategory } from "@/app/lib/api";
+import { getCategories, getProductsByCategory } from "@/app/lib/api";
 import { useEffect, useState } from "react";
 
 type product = {
@@ -24,8 +24,7 @@ const Offer = () => {
 
   useEffect(() => {
     const getOptions = async () => {
-      const res = await fetch("/api/categories");
-      const data = await res.json();
+      const data = await getCategories();
       setOptions(data);
       setValue(data[0]);
     };

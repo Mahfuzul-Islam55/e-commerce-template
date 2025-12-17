@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "@/app/components/selectOptions/SelectOptions.module.css";
+import { getCategories } from "@/app/lib/api";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -11,9 +12,8 @@ const SelectOptions = () => {
 
   useEffect(() => {
     const getOptions = async () => {
-      const res = await fetch("/api/categories");
-      const data = await res.json();
-      setOptions(data);
+      const res = await getCategories();
+      setOptions(res);
     };
 
     getOptions();

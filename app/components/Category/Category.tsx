@@ -1,5 +1,6 @@
 "use client";
 import styles from "@/app/components/Category/Category.module.css";
+import { getCategories } from "@/app/lib/api";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -27,8 +28,7 @@ const Category = () => {
 
   useEffect(() => {
     const getOptions = async () => {
-      const res = await fetch("/api/categories");
-      const data = await res.json();
+      const data = await getCategories();
       const customizedData = Array.isArray(data)
         ? data.map((item) => {
             return {

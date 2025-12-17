@@ -1,5 +1,6 @@
 "use client";
 import styles from "@/app/components/Sidenav/Sidenav.module.css";
+import { getCategories } from "@/app/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -63,8 +64,7 @@ const Sidenav = () => {
 
   useEffect(() => {
     const getOptions = async () => {
-      const res = await fetch("/api/categories");
-      const data = await res.json();
+      const data = await getCategories();
       setOptions(data);
     };
 
