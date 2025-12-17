@@ -1,12 +1,14 @@
 export async function getProductsByCategory(category: string) {
-  const safeCategory = encodeURIComponent(category);
+  const decodedCategory = decodeURIComponent(category);
+  const safeCategory = encodeURIComponent(decodedCategory);
+
   const res = await fetch(
     `https://fakestoreapi.com/products/category/${safeCategory}`,
     { cache: "no-store" }
   );
 
   if (!res.ok) {
-    throw [];
+    throw new Error("Failed to fetch products");
   }
   const data = await res.json();
   return data;
@@ -16,7 +18,7 @@ export async function getAllProducts() {
   const res = await fetch(`https://fakestoreapi.com/products`);
 
   if (!res.ok) {
-    throw [];
+    throw new Error("Failed to fetch products");
   }
   const data = await res.json();
   return data.length > 10 ? data.slice(0, 10) : data;
@@ -28,7 +30,7 @@ export async function getCategories() {
   });
 
   if (!res.ok) {
-    throw [];
+    throw new Error("Failed to fetch products");
   }
   const data = await res.json();
   return data;
